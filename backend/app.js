@@ -6,7 +6,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const userRoute = require('./routes/userRoute')
 
 app.use(cors({
-    origin:["http://localhost:3000","http://localhost:3001"]
+    origin:["http://localhost:3000","http://localhost:3001","https://skygoal123.netlify.app/"]
 }))
 
 app.use(mongoSanitize());
