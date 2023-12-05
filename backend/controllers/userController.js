@@ -2,6 +2,7 @@ const User = require('../models/userModel')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const asyncHandler = require('express-async-handler');
+const { saveImage } = require('../utils/cloudinaryImage')
 require("dotenv").config();
 
 const generateToken = (id) => {
@@ -80,34 +81,24 @@ const loginUser = asyncHandler(async (req, res) => {
 })
 
 
-const editProfile = asyncHandler(async(req,res)=>{
-    const {name,phone, role,email,imageUrl} = req.body;
+const editProPic = asyncHandler(async(req,res)=>{
+  
+  const {id} = req.userId
 
-    const user = await User.findOne({ email })
+  const cloudImg= await saveImage(req.file?.buffer)
+  console.log(cloudImg)
+  const updateUser = await User.findOneAndUpdate({_id:id},
+    {$set:{
+      imageUrl: cloudImg?.secure_url
+    }},
+    {new:true}
+    )
 
-    if(user.is_verified && user.is_admin===0){
-      if (user) {
-        const user = await User.findOneAndUpdate({ email },
-              {$set:{name,phone,role,imageUrl}},
-              {new:true})
-        res.json({
-          _id: user.id,
-          name: user.name,
-          email: user.email,
-          phone: user.phone,
-          role: user.role,
-          url: user.imageUrl,
-          is_verified: user.is_verified,
-          token: generateToken(user._id),
-        })
-      } else {
-        res.status(400)
-        throw new Error('Invalid credentials')
-      }
-    }else{
-        res.status(400)
-        throw new Error('User Blocked by admin')
-    }
+  if(updateUser){
+    res.status(200).json('Profile Pic Updated')
+  }else{
+    res.status(400).json('Profile pic updation failed')
+  }
 
 })
 
@@ -128,5 +119,5 @@ module.exports = {
     registerUser,
     loginUser,
     userDetails,
-    editProfile
+    editProPic
 }

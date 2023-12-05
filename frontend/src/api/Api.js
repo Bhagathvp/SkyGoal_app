@@ -21,3 +21,8 @@ export const getUserDetails = () => {
     { headers : {   auth : JSON.parse(localStorage.getItem('token'))   } })
 }
 
+export const editProPicApi =(data)=>{
+    return Axios.post('/editProPic', data, {
+        headers : { auth : JSON.parse(localStorage.getItem('token')),"Content-Type": "multipart/form-data"  }
+    })
+}

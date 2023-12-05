@@ -1,17 +1,14 @@
 
-import React, { useState,useEffect } from "react"
+import React, { useState } from "react"
 import './Register.css'
 import {useNavigate} from 'react-router-dom'
 import {PiEyeBold,PiEyeClosedBold} from 'react-icons/pi'
-// import { useDispatch, useSelector } from "react-redux"
 import { toast } from "react-toastify"
 import NavBar from "../../Components/NavBar"
 import Footer from "../../Components/Footer"
 import { signUpApi } from "../../../api/Api"
-// import {register,reset} from '../../../features/authSlice'
 
 export default function Register () {
-    const [messag,setMessag] = useState('');
     const [hide,setHide] = useState(true)
     const navigate = useNavigate();
 
@@ -157,7 +154,6 @@ export default function Register () {
               <button type="submit" className="bg-slate-700 text-white p-2 rounded px-4">
                 Submit
               </button>
-            <p className="text-red-800">{messag}</p>
             </div>
             <div className="text-center Links">
               Already registered?{" "}
