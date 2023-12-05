@@ -18,7 +18,7 @@ function App() {
   return (
 
     <>
-    <Suspense fallback={<p>Loading...</p>}>
+    <Suspense fallback={<p className='text-2xl font-medium'>Loading...</p>}>
       <Routes>
         <Route path="/" >
           <Route element={<PublicRoute />}>
