@@ -33,7 +33,7 @@ const userSchema = mongoose.Schema({
     },
     imageUrl: {
         type: String,
-        default:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbBEzSEpERLmcHGnkp_Gdimsc_a_e_VD2tZWmYsvUvSQ&s',
+        default:'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/-Insert_image_here-.svg/2560px--Insert_image_here-.svg.png',
         required: true
     }
 

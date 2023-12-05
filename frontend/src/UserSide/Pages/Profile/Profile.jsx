@@ -33,7 +33,7 @@ const Profile = () => {
         e.preventDefault();
         const formData = new FormData()
         formData.append("image",e.target.files[0]);
-        
+
         await editProPicApi(formData).then(res=>{
             console.log(res)
             toast.success("Profile Pic updated");
@@ -60,7 +60,7 @@ const Profile = () => {
     <div className="w-[100vw] h-[100vh] bg-gray-600 flex flex-col justify-between">
       <NavBar/>
       <>
-        <section className="h-[75%] bg-gray-900">
+        <section className="bg-gray-900 ">
             <div className=" items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
                 <div className="font-light text-gray-500 sm:text-lg dark:text-gray-400">
 
@@ -73,8 +73,8 @@ const Profile = () => {
                 </div>
                 <div className="grid grid-cols-2 gap-4 mt-8 ">
                     <div className='flex flex-col justify-center items-center w-full'>
-                        <div className='w-full object-contain'>
-                            <img className="w-full rounded-lg" src={details?.imageUrl} alt={details?.name}/>
+                        <div className='w-full object-contain '>
+                            <img className="w-full rounded-lg bg-white" src={details?.imageUrl} alt={details?.name}/>
                         </div>
                         <div>
                             <label htmlFor="file-input" className='text-white m-1'>

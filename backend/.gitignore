@@ -1,2 +1,5 @@
-node_modules
-.env
+
+#adding git ignore to ignore these files from pushing into the github, which may contain sensitive or large files contents
+
+node_modules   
+.env 
