@@ -21,6 +21,20 @@ const registerUser= asyncHandler(async(req,res)=>{
         res.status(400).json('Add all the fields');
         return;
     }
+    const mailReg = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    if(!mailReg.test(email)){
+      res.status(400).json('Enter a valid email id');
+        return;
+    }
+    const no = /^\d{10}$/;
+    if(!no.test(phone)){
+      res.status(400).json('Enter a valid phone number');
+        return;
+    }
+    if(password.length < 5){
+      res.status(400).json('Password should have least 5 chars');
+        return;
+    }
 
     //check if user exists
     const userExists = await User.findOne({email});
@@ -57,8 +71,18 @@ const registerUser= asyncHandler(async(req,res)=>{
 //login
 const loginUser = asyncHandler(async (req, res) => {
     const { email, password } = req.body
-    console.log(email);
 
+    const mailReg = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    if(!mailReg.test(email)){
+      res.status(400).json('Enter a valid email id');
+        return;
+    }
+
+    if(password.length < 5){
+      res.status(400).json('Password should have least 5 chars');
+        return;
+    }
+    
     // Check for user email
     const user = await User.findOne({ email })
 
@@ -82,7 +106,7 @@ const loginUser = asyncHandler(async (req, res) => {
 
 
 const editProPic = asyncHandler(async(req,res)=>{
-  
+
   const {id} = req.userId
 
   const cloudImg= await saveImage(req.file?.buffer)
