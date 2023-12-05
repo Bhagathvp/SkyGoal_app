@@ -17,6 +17,6 @@ app.use(express.urlencoded({ extended: true }));
 //for user routes
 app.use("/api/", userRoute);
 
-app.listen(5000, ()=>{
-    console.log("server running @ 5000");
+app.listen(5500, ()=>{
+    console.log("server running @ 5500");
 })
