@@ -1,15 +1,7 @@
 
-  .register-form-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgb(43, 43, 43);
-  }
-  
+ 
   .register-form {
-    width: 420px;
+    width: 520px;
     box-shadow: rgba(254, 254, 254, 0.837) 1px 1px 10px;
     padding-top: 30px;
     padding-bottom: 20px;
@@ -18,8 +10,8 @@
   }
   
   .register-form-content {
-    padding-left: 12%;
-    padding-right: 12%;
+    padding-left: 10%;
+    padding-right: 10%;
   }
   
   .register-form-title {
@@ -40,3 +32,9 @@
     transform: scale(1.1);
     transition: 300ms;
   }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

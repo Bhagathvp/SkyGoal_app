@@ -11,6 +11,7 @@ import PrivateRoute from "./routes/privateRoute";
 
 const Login = lazy(()=>import('./UserSide/Pages/Login/Login'))
 const SignUp = lazy(()=>import('./UserSide/Pages/Register/Register'))
+const Profile = lazy(()=>import('./UserSide/Pages/Profile/Profile'))
 
 function App() {
 
@@ -25,7 +26,7 @@ function App() {
             <Route path="/login" element={ <Login/> } />
           </Route>
           <Route element={<PrivateRoute />}>
-            {/* <Route path="/userDetails" element={<Profile />} /> */}
+            <Route path="/userDetails" element={<Profile />} />
           </Route>
         </Route>
       </Routes>
