@@ -1,7 +1,10 @@
 const mongoose = require('mongoose')
+require('dotenv').config();
+
+const mongourl = process.env.MONGOURL
 
 mongoose.set("strictQuery", true);
-mongoose.connect("mongodb://127.0.0.1:27017/SkyGoal?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.8.2");
+mongoose.connect(mongourl);
 
 const connection = mongoose.connection;
 connection.once('open', () => {
